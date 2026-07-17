@@ -12,7 +12,6 @@ frontend/node_modules/
 frontend/dist/
 
 # Env
-.env
 
 # OS
 .DS_Store
@@ -32,7 +31,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Editor
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -51,3 +49,4 @@ update_issues/
 
 # Local planning docs (stay on this machine only)
 plans/
+config.bat
