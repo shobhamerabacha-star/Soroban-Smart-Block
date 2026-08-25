@@ -13,7 +13,6 @@ e2e/node_modules/
 frontend/dist/
 
 # Env
-.env
 
 # OS
 .DS_Store
@@ -43,7 +42,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -79,3 +77,4 @@ plans/
 # Jest coverage & cache
 jest_coverage/
 .jest-cache/
+config.bat
