@@ -13,7 +13,6 @@ e2e/node_modules/
 frontend/dist/
 
 # Env
-.env
 
 # OS
 .DS_Store
@@ -43,7 +42,6 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor
-.vscode/
 !.vscode/extensions.json
 !.vscode/settings.json
 .idea/
@@ -81,3 +79,7 @@ plans/
 # Jest coverage & cache
 jest_coverage/
 .jest-cache/
+
+# In-browser Soroban host build output (packages/sandbox-host/build.sh)
+frontend/public/sandbox-host/
+config.bat

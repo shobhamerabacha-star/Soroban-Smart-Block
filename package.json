@@ -9,7 +9,7 @@
     "configure-branch-protection": "node scripts/configure-branch-protection.js --branch main",
     "deploy:contract": "node scripts/deploy-contract.js",
     "generate:postman": "node scripts/generate-postman-collection.js",
-    "dev": "make dev",
+    "dev": "node init && make dev",
     "prepare": "husky",
     "changeset": "changeset",
     "version-packages": "changeset version",
