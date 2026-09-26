@@ -1,5 +1,8 @@
 import js from "@eslint/js";
 import globals from "globals";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 export default [
   js.configs.recommended,
@@ -19,6 +22,38 @@ export default [
       "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "no-console": "off",
       "no-empty": ["error", { allowEmptyCatch: true }],
+    },
+  },
+
+  // ── SSRF (#928): all outbound HTTP must go through src/safeHttp.js ──────────
+  {
+    files: ["src/**/*.js"],
+    ignores: ["src/safeHttp.js", "src/admin-cli.js", "src/optional/**"],
+    rules: {
+      "no-restricted-globals": [
+        "error",
+        { name: "fetch", message: "Use safeFetch from src/safeHttp.js for outbound requests (SSRF, #928)." },
+      ],
+      "no-restricted-properties": [
+        "error",
+        ...["http", "https"].flatMap((object) =>
+          ["request", "get"].map((property) => ({
+            object,
+            property,
+            message: "Use safeFetch from src/safeHttp.js for outbound requests (SSRF, #928).",
+          })),
+        ),
+        { object: "globalThis", property: "fetch", message: "Use safeFetch from src/safeHttp.js (SSRF, #928)." },
+      ],
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: ["axios", "node-fetch", "undici", "got"].map((name) => ({
+            name,
+            message: "Use safeFetch from src/safeHttp.js for outbound requests (SSRF, #928).",
+          })),
+        },
+      ],
     },
   },
 
