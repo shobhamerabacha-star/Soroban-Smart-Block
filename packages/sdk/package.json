@@ -17,7 +17,7 @@
     }
   },
   "scripts": {
-    "build": "npm run generate-types && tsc",
+    "build": "node init && npm run generate-types && tsc",
     "generate-types": "openapi-typescript ../../docs/api/openapi.yaml -o ./src/api.types.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
